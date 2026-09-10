@@ -1,160 +1,407 @@
-# Mini Hospital Emergency Management System
+# 🏥 Hospital Management System
 
-A console-based Java application developed for **CIT300 – Data Structures and Algorithms**. The system demonstrates how core data structures can be applied to a simple hospital emergency workflow, including patient registration, emergency queuing, treatment recording, and patient visit history management.
+A simple **Java-based Hospital Management System** developed to manage basic hospital operations such as patients, doctors, appointments, emergency visits, diagnoses, and treatments.
 
-## Features
+This project was developed using **Java** and demonstrates the practical use of **Object-Oriented Programming (OOP)** and **Data Structures & Algorithms**.
 
-- Register, search, delete, and display patient records.
-- Store patient records in a **Binary Search Tree (BST)** using Patient ID as the key.
-- Add registered patients to an emergency **FIFO Queue**.
-- Dequeue the next patient and record the completed treatment.
-- Store completed treatments in a **LIFO Stack**.
-- Maintain a separate **Singly Linked List** of visits for each patient.
-- Add, search, remove, and display patient visits.
-- Automatically add a treatment record and patient visit when an emergency patient is treated.
-- Handle empty data structures and invalid numeric input with user-friendly console messages.
+---
 
-## Data Structures Used
+## 📌 Project Overview
 
-| System Requirement | Data Structure | Main Class |
-|---|---|---|
-| Patient records | Binary Search Tree (BST) | `PatientBST.java` |
-| Emergency patient waiting list | Queue (FIFO) | `EmergencyQueue.java` |
-| Completed treatment history | Stack (LIFO) | `TreatmentStack.java` |
-| Individual patient visit history | Singly Linked List | `VisitLinkedList.java` |
+The Hospital Management System is a console-based Java application designed to organize and manage hospital-related information.
 
-All four required data structures are implemented manually with custom node classes. The project does not use `java.util.LinkedList`, `java.util.Queue`, or `java.util.Stack` for these structures.
+The system allows users to manage patient and doctor information, create appointments, record emergency visits, enter diagnoses and treatments, and view stored hospital records.
 
-## How the System Works
+The project mainly focuses on applying Java programming concepts and data structures in a practical application.
 
-### 1. Patient Records – Binary Search Tree
-Patients are stored according to their unique Patient ID. The BST supports insertion, searching, deletion, and in-order traversal. Displaying the tree in-order shows patients in ascending Patient ID order. BST deletion handles nodes with zero, one, or two children.
+---
 
-### 2. Emergency Patient Queue – FIFO
-A patient must first exist in the patient records before being added to the emergency queue. Patients are treated in **First In, First Out (FIFO)** order. When the next patient is dequeued, the program asks for the treatment and completion date.
+## ✨ Main Features
 
-### 3. Treatment History – Stack
-Completed treatments are stored in a custom stack. Because the stack follows **Last In, First Out (LIFO)** order, the most recently completed treatment is displayed or removed first. Treatment records can also be entered manually for registered patients.
+The system provides several hospital management functions, including:
 
-### 4. Patient Visit History – Singly Linked List
-Each `Patient` object owns its own `VisitLinkedList`. A visit contains a Visit ID, date, doctor name, diagnosis, and treatment. Visits can be added, searched by Visit ID, removed, and displayed.
+- Add and manage patient details
+- Add and manage doctor details
+- Create hospital appointments
+- Manage emergency patient visits
+- Enter patient diagnosis details
+- Record treatment information
+- Search and view stored records
+- Remove records when required
+- Display hospital information through a console-based menu
 
-When a patient is treated through the emergency queue, the system automatically:
+---
 
-1. Removes the next patient from the queue.
-2. Creates and pushes a `TreatmentRecord` onto the treatment stack.
-3. Creates a `Visit` and appends it to that patient's visit history.
+## 🧠 Concepts Used
 
-This workflow demonstrates how the four data structures work together in one application.
+This project demonstrates several important programming concepts:
 
-## Main Menu
+### Object-Oriented Programming
+
+The system uses Java OOP concepts such as:
+
+- Classes and Objects
+- Encapsulation
+- Constructors
+- Methods
+- Object interaction
+- Modular program structure
+
+### Data Structures
+
+Different data structures are used to organize and manage hospital information efficiently.
+
+These structures help demonstrate how data can be stored, accessed, searched, added, and removed within a real-world application.
+
+---
+
+## 🛠️ Technologies Used
+
+| Technology | Purpose |
+|---|---|
+| Java | Main programming language |
+| Oracle JDK 26 | Java compiler and runtime environment |
+| Visual Studio Code | Development environment |
+| PowerShell / Command Prompt | Compiling and running the application |
+| GitHub | Source code hosting and version control |
+
+---
+
+## 📂 Project Structure
+
+A simplified structure of the project is shown below:
 
 ```text
-===== Mini Hospital Emergency Management System =====
-1. Patient Records (BST)
-2. Emergency Patient Queue
-3. Treatment History (Stack)
-4. Patient Visit History (Linked List)
-0. Exit
+Hospital-Management-System/
+│
+├── HospitalManagementSystem/
+│   └── src/
+│       ├── Java source files
+│       └── ...
+│
+├── README.md
+└── .gitignore
 ```
 
-## Technologies
+> **Note:** The `oracleJdk-26` folder is not included in this GitHub repository.
 
-- Java
-- Console-based user interface
-- Object-Oriented Programming (OOP)
-- Custom implementations of BST, Queue, Stack, and Singly Linked List
+---
 
-## Requirements
+# ☕ Java Requirements
 
-Install a **Java Development Kit (JDK)** and make sure `java` and `javac` are available from your terminal.
+This project requires **Oracle JDK 26** to compile and run.
 
-The project has been tested with **Oracle JDK 26**. It uses standard Java features and does not require any external libraries.
+Oracle JDK 26 was used during the development and testing of this project.
 
-Check your Java installation with:
+The complete Oracle JDK folder is **not uploaded to this repository** because the JDK contains a large number of files and significantly increases the repository size.
 
-```bash
+Therefore, users should download and install **Oracle JDK 26 separately** before running the project.
+
+---
+
+## 📥 Step 1 – Download Oracle JDK 26
+
+Download **Oracle JDK 26** from the official Oracle Java website:
+
+https://www.oracle.com/java/technologies/downloads/
+
+Choose the correct version for your operating system.
+
+For example, Windows users can download the appropriate **Windows x64** version.
+
+---
+
+## ⚙️ Step 2 – Install Oracle JDK 26
+
+After downloading Oracle JDK 26, install it on your computer.
+
+After installation, open:
+
+- Command Prompt
+
+or
+
+- Windows PowerShell
+
+Then check the Java version:
+
+```powershell
 java -version
+```
+
+You can also check the Java compiler:
+
+```powershell
 javac -version
 ```
 
-## Compile and Run
+The output should indicate that **Java/JDK 26** is available.
 
-From the repository root:
-
-### Windows PowerShell
-
-```powershell
-cd "HospitalManagementSystem\src"
-javac *.java
-java HospitalManagementSystem
-```
-
-### macOS / Linux
-
-```bash
-cd HospitalManagementSystem/src
-javac *.java
-java HospitalManagementSystem
-```
-
-If you are using the JDK included in the original project folder on Windows, you can also run the compiler and Java executable using their full relative paths. For a public GitHub repository, however, it is better to install a JDK separately rather than commit the complete JDK distribution.
-
-## Project Structure
+Example:
 
 ```text
-Hospital System/
-├── README.md
-├── HospitalManagementSystem/
-│   ├── README.md
-│   └── src/
-│       ├── EmergencyQueue.java
-│       ├── HospitalManagementSystem.java
-│       ├── Patient.java
-│       ├── PatientBST.java
-│       ├── TreatmentRecord.java
-│       ├── TreatmentStack.java
-│       ├── Visit.java
-│       └── VisitLinkedList.java
-└── Screenshots of program output/
-    └── ... program output screenshots
+java version "26.x.x"
+javac 26.x.x
 ```
 
-## Class Overview
+---
 
-| Class | Purpose |
-|---|---|
-| `HospitalManagementSystem` | Application entry point, menus, input handling, and workflow coordination |
-| `Patient` | Stores patient details and owns the patient's visit history |
-| `PatientBST` | Stores and manages patient records using a BST |
-| `EmergencyQueue` | Maintains emergency patients in FIFO order |
-| `TreatmentRecord` | Represents one completed treatment |
-| `TreatmentStack` | Stores treatment records in LIFO order |
-| `Visit` | Represents one hospital visit |
-| `VisitLinkedList` | Stores and manages a patient's visits |
+# 🚀 How to Run the Project
 
-## Example Workflow
+## Method 1 – Using Visual Studio Code
 
-1. Open **Patient Records** and register a patient.
-2. Open **Emergency Patient Queue** and enqueue the patient's ID.
-3. Display the queue to view waiting patients.
-4. Dequeue the next patient for treatment.
-5. Enter the treatment details and completion date.
-6. Open **Treatment History** to view the completed treatment.
-7. Open **Patient Visit History** to view the visit automatically recorded for that patient.
+### Step 1
 
-## Screenshots
+Download or clone this GitHub repository.
 
-Program output screenshots are included in the `Screenshots of program output` folder and demonstrate the console menus and system operations.
+If you download it as a ZIP file, extract the ZIP file first.
 
-## Important Notes
+### Step 2
 
-- Patient IDs must be unique.
-- A patient must be registered before being added to the emergency queue or receiving a manual treatment record.
-- Treatment Record IDs and Visit IDs are generated automatically while the program is running.
-- Data is stored in memory only. Closing the program clears the current records because no database or file persistence is used.
-- Automatically created emergency visits currently use `Duty Doctor` as the doctor name and the patient's registered medical condition as the diagnosis.
+Make sure **Oracle JDK 26** is installed on your computer.
 
-## Academic Purpose
+### Step 3
 
-This project was created to demonstrate practical understanding of **Data Structures and Algorithms** in Java, especially Binary Search Trees, Queues, Stacks, and Singly Linked Lists.
+Open **Visual Studio Code**.
+
+### Step 4
+
+Select:
+
+```text
+File → Open Folder
+```
+
+Then select the Hospital Management System project folder.
+
+### Step 5
+
+Open the Java source files inside the `src` folder.
+
+### Step 6
+
+Open the VS Code terminal:
+
+```text
+Terminal → New Terminal
+```
+
+### Step 7
+
+Navigate to the folder containing the Java source files.
+
+For example:
+
+```powershell
+cd HospitalManagementSystem\src
+```
+
+### Step 8
+
+Compile the Java files:
+
+```powershell
+javac *.java
+```
+
+### Step 9
+
+Run the main Java class.
+
+For example:
+
+```powershell
+java HospitalManagementSystem
+```
+
+The Hospital Management System menu should now appear in the terminal.
+
+---
+
+# 💻 Method 2 – Using PowerShell or Command Prompt
+
+Open PowerShell or Command Prompt inside the project directory.
+
+Navigate to the source folder:
+
+```powershell
+cd HospitalManagementSystem\src
+```
+
+Compile the Java source files:
+
+```powershell
+javac *.java
+```
+
+Then run the main class:
+
+```powershell
+java HospitalManagementSystem
+```
+
+---
+
+## 🖥️ Example Program Flow
+
+When the program starts, the user can select different options from the main menu.
+
+A typical workflow may look like this:
+
+```text
+Start Program
+     ↓
+Main Menu
+     ↓
+Select an Operation
+     ↓
+Enter Required Information
+     ↓
+Process Data
+     ↓
+Display Result
+     ↓
+Return to Main Menu
+```
+
+For example, an emergency visit can include information such as:
+
+```text
+Patient Details
+      ↓
+Emergency Visit
+      ↓
+Diagnosis
+      ↓
+Treatment
+      ↓
+Record Stored
+```
+
+---
+
+## 🏥 Example Medical Record
+
+A simple example of information entered into the system could be:
+
+```text
+Diagnosis: Minor workplace injury with cuts and bruises
+Treatment: Clean the wound, apply antiseptic and bandage
+```
+
+Another example:
+
+```text
+Diagnosis: Fever
+Treatment: Rest, fluids and appropriate medical treatment
+```
+
+These are demonstration records used to test the hospital management functions.
+
+---
+
+## 📊 System Objectives
+
+The main objectives of this project are to:
+
+- Develop a basic hospital management application using Java
+- Apply Object-Oriented Programming concepts
+- Apply Data Structures and Algorithms in a practical system
+- Organize patient and hospital information
+- Practice adding, searching, viewing and removing records
+- Improve Java programming and problem-solving skills
+
+---
+
+## ⚠️ Important Notes
+
+### Oracle JDK
+
+The `oracleJdk-26` folder is intentionally excluded from this repository.
+
+You **do not need to upload the Oracle JDK folder to GitHub**.
+
+Users who download this project should install Oracle JDK 26 separately.
+
+### Data Storage
+
+This is primarily an educational Java project. Depending on the current implementation, application data may be stored temporarily while the program is running.
+
+If the program does not use a permanent database or file storage system, the stored data may be lost when the application is closed.
+
+### Medical Use
+
+This project was created for **educational and academic purposes only**.
+
+It is **not intended for use as a real hospital or clinical information system**.
+
+---
+
+## 🔧 Troubleshooting
+
+### `java` is not recognized
+
+If you receive an error similar to:
+
+```text
+'java' is not recognized as an internal or external command
+```
+
+make sure Oracle JDK 26 is installed correctly and Java has been added to the system PATH.
+
+### `javac` is not recognized
+
+If:
+
+```powershell
+javac -version
+```
+
+does not work, check your JDK installation and environment variables.
+
+### Program does not start
+
+Make sure you are running the command from the correct folder containing the compiled Java files.
+
+---
+
+## 🔮 Future Improvements
+
+The system can be improved in the future by adding features such as:
+
+- Graphical User Interface (GUI)
+- Database integration
+- User login system
+- Admin dashboard
+- Permanent patient record storage
+- Prescription management
+- Billing system
+- Pharmacy management
+- Staff management
+- Improved appointment scheduling
+- Report generation
+- Advanced search functionality
+
+---
+
+## 🎓 Academic Purpose
+
+This project was developed as an educational project to demonstrate knowledge of:
+
+**Java Programming, Object-Oriented Programming, Data Structures, Algorithms, and basic Hospital Management System concepts.**
+
+---
+
+## 👨‍💻 Developer
+
+Developed as part of an academic Java programming project.
+
+---
+
+## 📄 License
+
+This project is intended for **educational purposes**.
+
+---
+
+⭐ If you find this project useful, feel free to star the repository.
